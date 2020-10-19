@@ -6,7 +6,8 @@ using UnityEngine;
 public class ButtonPlay : MonoBehaviour
 {
     [SerializeField]
-    private Camera MainCamera;
+    private Camera MainCamera = null;
+    //private GameObject Button = GetComponent <Sprite>
 
     // Start is called before the first frame update
     void Start()
@@ -24,4 +25,9 @@ public class ButtonPlay : MonoBehaviour
     {
         
     }
+
+    //void AnimationClickButton()
+    //{
+    //    while()
+    //}
 }
