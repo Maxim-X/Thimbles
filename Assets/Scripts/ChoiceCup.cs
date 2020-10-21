@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChoiceCup : MonoBehaviour
 {
-    public static int c = 0;
+    public static GameObject choiceCup = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +19,6 @@ public class ChoiceCup : MonoBehaviour
 
     void OnMouseDown()
     {
-        c = 1;
+        choiceCup = gameObject;
     }
 }
