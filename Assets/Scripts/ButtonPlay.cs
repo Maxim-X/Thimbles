@@ -27,6 +27,7 @@ public class ButtonPlay : MonoBehaviour
             if (Math.Round(button.transform.localScale.x, 2) == 0.99)
             {
                 MainCamera.transform.localPosition = new Vector3(0.1f, 1.903f, -8.329f);
+                Game.StartGame = true;
                 animationEditScale = false;
             }
         }

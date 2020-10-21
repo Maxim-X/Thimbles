@@ -9,13 +9,15 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject Cup_1 = null;
     [SerializeField] private GameObject Cup_2 = null;
     [SerializeField] private GameObject Cup_3 = null;
+
+    public static bool StartGame = false;
+
     private GameObject correct_cup;
     private GameObject choiceCup;
     GameObject[] AllCup = null;
     private SpriteRenderer button;
     private Vector3 newScaleButton = new Vector3(1f, 1f, 1f);
     private bool animationEditScale = false;
-    private bool StartGame = false;
     private int StepGame = 1;
 
     // Start is called before the first frame update
@@ -29,20 +31,10 @@ public class Game : MonoBehaviour
     void Update()
     {
 
-       
 
-        if (animationEditScale)
-        {
-            button.transform.localScale = Vector3.Lerp(transform.localScale, newScaleButton, Time.deltaTime + 0.1f);
-            if (Math.Round(button.transform.localScale.x, 2) == 0.99)
-            {
-                animationEditScale = false;
-                StartGame = true;
-            }
-        }
         if (StartGame)
         {
-            if(StepGame == 1) // Меняем местами стаканчики
+            if (StepGame == 1) // Меняем местами стаканчики
             {
 
                 correct_cup = AllCup[UnityEngine.Random.Range(0, 3)];
@@ -52,8 +44,8 @@ public class Game : MonoBehaviour
             else if (StepGame == 2) // Даем пользователю выбрать стаканчик
             {
                 choiceCup = ChoiceCup.choiceCup;
-                
-                if(choiceCup != null)
+
+                if (choiceCup != null)
                 {
                     print(choiceCup);
                     StepGame = StepGame + 1;
@@ -61,10 +53,10 @@ public class Game : MonoBehaviour
             }
             else if (StepGame == 3) // Проверяем правильность ответа
             {
-                if(choiceCup == correct_cup)
+                if (choiceCup == correct_cup)
                 {
                     print("True");
-                    
+
                 }
                 else
                 {
@@ -72,6 +64,16 @@ public class Game : MonoBehaviour
                 }
                 StepGame = 1;
                 ChoiceCup.choiceCup = null;
+            }
+        }
+        
+
+        if (animationEditScale)
+        {
+            button.transform.localScale = Vector3.Lerp(transform.localScale, newScaleButton, Time.deltaTime + 0.1f);
+            if (Math.Round(button.transform.localScale.x, 2) == 0.99)
+            {
+                animationEditScale = false;
             }
         }
 
