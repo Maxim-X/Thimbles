@@ -27,7 +27,7 @@ public class ButtonPlay : MonoBehaviour
  
     void OnMouseUp()
     {
-        MainCamera.transform.localPosition = new Vector3(0.1f, 1.903f, -8.329f);
+        MainCamera.transform.localPosition = new Vector3(3.93f, 1.903f, -8.329f);
     }
 
     
