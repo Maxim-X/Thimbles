@@ -10,8 +10,6 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject Cup_2 = null;
     [SerializeField] private GameObject Cup_3 = null;
 
-    public static bool StartGame = false;
-
     private GameObject correct_cup = null;
     private GameObject choiceCup;
     GameObject[] AllCup = null;
@@ -43,7 +41,7 @@ public class Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!StartGame)
+        if (!Setting.StartGame)
         {
             UseCup_1 = null;
             UseCup_2 = null;
@@ -55,7 +53,7 @@ public class Game : MonoBehaviour
         }
 
 
-        if (StartGame && !Setting.pause)
+        if (Setting.StartGame && !Setting.pause)
         {
             if (StepGame == 1) // Меняем местами стаканчики
             {

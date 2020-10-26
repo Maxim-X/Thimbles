@@ -28,6 +28,7 @@ public class ButtonPlay : MonoBehaviour
     void OnMouseUp()
     {
         MainCamera.transform.localPosition = new Vector3(3.93f, 1.903f, -8.329f);
+        Setting.StartGame = true;
     }
 
     

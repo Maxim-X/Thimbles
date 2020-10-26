@@ -23,7 +23,6 @@ public class ButtonPressAnimation : MonoBehaviour
             button.transform.localScale = Vector3.Lerp(transform.localScale, newScaleButton, Time.deltaTime + 0.1f);
             if (Math.Round(button.transform.localScale.x, 2) == 0.99)
             {
-                Game.StartGame = true;
                 animationEditScale = false;
             }
         }

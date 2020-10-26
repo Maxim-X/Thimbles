@@ -5,6 +5,7 @@ using UnityEngine;
 public class Setting : MonoBehaviour
 {
     public static bool pause = false;
+    public static bool StartGame = false;
 
     [SerializeField] private GameObject cup_1 = null;
     [SerializeField] private GameObject cup_2 = null;
@@ -16,6 +17,7 @@ public class Setting : MonoBehaviour
 
     public static int current_record = 0;
     public static int max_record = 34;
+
 
     // Start is called before the first frame update
     void Start()
