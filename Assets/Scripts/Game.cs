@@ -127,11 +127,12 @@ public class Game : MonoBehaviour
                 if (choiceCup == correct_cup)
                 {
                     print("True");
-
+                    Setting.EditRecord(Setting.current_record + 1);
                 }
                 else
                 {
                     print("False");
+                    Setting.EditRecord(0);
                 }
                 correct_cup = null;
                 count_moves = count_moves_def;
