@@ -20,7 +20,10 @@ public class ButtonBackToMainMenu : MonoBehaviour
 
     void OnMouseUp()
     {
+        Game.StartGame = false;
+        Setting.pause = false;
         MainCamera.transform.localPosition = new Vector3(-6.17f, 1.903f, -8.329f);
         settingsSprite.gameObject.transform.localPosition = new Vector3(0.0984f, 3.89f, -6.9f);
+        Setting.pause = false;
     }
 }

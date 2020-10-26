@@ -28,7 +28,8 @@ public class ButtonSettings : MonoBehaviour
 
     void OnMouseUp()
     {
-        settingsSprite.gameObject.transform.localPosition = new Vector3(0.0984f, 1.666f, -7.658f);
+        Setting.pause = true;
+        settingsSprite.gameObject.transform.localPosition = new Vector3(3.93f, 1.666f, -7.658f);
     }
 
 

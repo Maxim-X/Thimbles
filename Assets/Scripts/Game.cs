@@ -38,17 +38,24 @@ public class Game : MonoBehaviour
     {
         button = GetComponent<SpriteRenderer>();
         AllCup = new GameObject[] { Cup_1,Cup_2,Cup_3 };
-
-        cup_2_coord = new Vector3(Cup_2.transform.localPosition.x, Cup_2.transform.localPosition.y, Cup_2.transform.localPosition.z);
-        cup_1_coord = new Vector3(Cup_1.transform.localPosition.x, Cup_1.transform.localPosition.y, Cup_1.transform.localPosition.z);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!StartGame)
+        {
+            UseCup_1 = null;
+            UseCup_2 = null;
+            Cup_1.transform.localPosition = Setting.def_position_cup_1;
+            Cup_2.transform.localPosition = Setting.def_position_cup_2;
+            Cup_3.transform.localPosition = Setting.def_position_cup_3;
+            StepGame = 1;
+            count_moves = count_moves_def;
+        }
 
 
-        if (StartGame)
+        if (StartGame && !Setting.pause)
         {
             if (StepGame == 1) // Меняем местами стаканчики
             {
