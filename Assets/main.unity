@@ -2282,6 +2282,7 @@ GameObject:
   - component: {fileID: 2034025436}
   - component: {fileID: 2034025437}
   - component: {fileID: 2034025438}
+  - component: {fileID: 2034025439}
   m_Layer: 0
   m_Name: button_back
   m_TagString: Untagged
@@ -2391,6 +2392,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.76, y: 0.76}
   m_EdgeRadius: 0
+--- !u!114 &2034025439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034025434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c80da68e4dedf2489bd5b8820ccff47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsSprite: {fileID: 1075220824}
 --- !u!1 &2071553062
 GameObject:
   m_ObjectHideFlags: 0
