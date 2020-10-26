@@ -12,7 +12,7 @@ public class Game : MonoBehaviour
 
     public static bool StartGame = false;
 
-    private GameObject correct_cup;
+    private GameObject correct_cup = null;
     private GameObject choiceCup;
     GameObject[] AllCup = null;
     private SpriteRenderer button;
@@ -23,9 +23,13 @@ public class Game : MonoBehaviour
     private Vector3 cup_2_coord;
 
     private int count_moves = 5;
+    private int count_moves_def = 5;
 
-    private GameObject RandCup_1 = null;
-    private GameObject RandCup_2 = null;
+    private GameObject UseCup_1 = null;
+    private GameObject UseCup_2 = null;
+
+    private float x_pre_1; // Предыдущий x передвижения
+    private float x_pre_2; // Предыдущий x передвижения
 
 
 
@@ -35,8 +39,8 @@ public class Game : MonoBehaviour
         button = GetComponent<SpriteRenderer>();
         AllCup = new GameObject[] { Cup_1,Cup_2,Cup_3 };
 
-        cup_1_coord = new Vector3(Cup_2.transform.localPosition.x, Cup_2.transform.localPosition.y, Cup_2.transform.localPosition.z);
-        cup_2_coord = new Vector3(Cup_1.transform.localPosition.x, Cup_1.transform.localPosition.y, Cup_1.transform.localPosition.z);
+        cup_2_coord = new Vector3(Cup_2.transform.localPosition.x, Cup_2.transform.localPosition.y, Cup_2.transform.localPosition.z);
+        cup_1_coord = new Vector3(Cup_1.transform.localPosition.x, Cup_1.transform.localPosition.y, Cup_1.transform.localPosition.z);
     }
 
     // Update is called once per frame
@@ -49,48 +53,59 @@ public class Game : MonoBehaviour
             if (StepGame == 1) // Меняем местами стаканчики
             {
 
-                correct_cup = AllCup[UnityEngine.Random.Range(0, 3)];
-
-                if(RandCup_1 != null && RandCup_2 != null) {
-                    RandCup_1.transform.localPosition = Vector3.Lerp(RandCup_1.transform.localPosition, cup_1_coord, Time.deltaTime + 0.1f);
-                    RandCup_2.transform.localPosition = Vector3.Lerp(RandCup_2.transform.localPosition, cup_2_coord, Time.deltaTime + 0.1f);
+                if(correct_cup == null)
+                {
+                    correct_cup = AllCup[UnityEngine.Random.Range(0, 3)]; // правельный стаканчик
                 }
 
 
-
-                print(Math.Round(Cup_1.transform.localPosition.x, 3) + " == " + Math.Round(cup_1_coord.x, 3));
-
-                if (RandCup_1 == null || Math.Round(RandCup_1.transform.localPosition.x, 3) == Math.Round(cup_1_coord.x, 3))
+                if(UseCup_1 == null && UseCup_2 == null)
                 {
-                    print(count_moves);
-                    if(count_moves != 0)
+                    GameObject rand_cup_1 = AllCup[UnityEngine.Random.Range(0, 3)];
+                    GameObject rand_cup_2;
+                    do
+                    {
+                        rand_cup_2 = AllCup[UnityEngine.Random.Range(0, 3)];
+                    } while (rand_cup_1 == rand_cup_2);
+
+
+                    cup_1_coord = new Vector3(rand_cup_1.transform.localPosition.x, rand_cup_1.transform.localPosition.y, rand_cup_1.transform.localPosition.z);
+                    cup_2_coord = new Vector3(rand_cup_2.transform.localPosition.x, rand_cup_2.transform.localPosition.y, rand_cup_2.transform.localPosition.z);
+
+                    UseCup_1 = rand_cup_1;
+                    UseCup_2 = rand_cup_2;
+
+                    x_pre_1 = UseCup_1.transform.localPosition.x;
+                    x_pre_2 = UseCup_2.transform.localPosition.x;
+                }
+
+
+                if(UseCup_1 != null && UseCup_2 != null) { // перемещаем стаканчики
+                    UseCup_1.transform.localPosition = Vector3.Lerp(UseCup_1.transform.localPosition, cup_2_coord, Time.deltaTime + 0.1f);
+                    UseCup_2.transform.localPosition = Vector3.Lerp(UseCup_2.transform.localPosition, cup_1_coord, Time.deltaTime + 0.1f);
+                }
+
+
+                if(x_pre_1 == UseCup_1.transform.localPosition.x)
+                {
+                    if (count_moves != 0)
                     {
                         count_moves--;
 
-                        GameObject rand_cup_1 = AllCup[UnityEngine.Random.Range(0, 2)];
-                        GameObject rand_cup_2;
-                        do
-                        {
-                            rand_cup_2 = AllCup[UnityEngine.Random.Range(0, 3)];
-                        } while (rand_cup_1 == rand_cup_2) ;
-
-
-                    correct_cup = AllCup[UnityEngine.Random.Range(0, 3)];
-                        cup_1_coord = new Vector3(rand_cup_2.transform.localPosition.x, rand_cup_2.transform.localPosition.y, rand_cup_2.transform.localPosition.z);
-                        cup_2_coord = new Vector3(rand_cup_1.transform.localPosition.x, rand_cup_1.transform.localPosition.y, rand_cup_1.transform.localPosition.z);
-
-                        RandCup_1 = rand_cup_1;
-                        RandCup_2 = rand_cup_2;
-
+                        UseCup_1 = null;
+                        UseCup_2 = null;
 
                     }
                     else
                     {
                         StepGame = StepGame + 1;
-                        count_moves = 5;
                     }
-
                 }
+                else
+                {
+                    x_pre_1 = UseCup_1.transform.localPosition.x;
+                }
+
             }
             else if (StepGame == 2) // Даем пользователю выбрать стаканчик
             {
@@ -113,6 +128,8 @@ public class Game : MonoBehaviour
                 {
                     print("False");
                 }
+                correct_cup = null;
+                count_moves = count_moves_def;
                 StepGame = 1;
                 ChoiceCup.choiceCup = null;
             }
