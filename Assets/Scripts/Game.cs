@@ -115,6 +115,7 @@ public class Game : MonoBehaviour
                     }
                     else
                     {
+                        ChoiceCup.choiceCup = null;
                         StepGame = StepGame + 1;
                     }
                 }
