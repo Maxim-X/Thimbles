@@ -143,10 +143,8 @@ public class Game : MonoBehaviour
                     coroutine = ShowAnswerAfterTime(1.0f, true);
                     // Отображаем иконку правильного ответа на секунду
                     StartCoroutine(coroutine);
-
                     print("True");
                     Setting.EditRecord(Setting.current_record + 1);
-                    
                 }
                 else
                 {
@@ -159,10 +157,10 @@ public class Game : MonoBehaviour
                     Setting.pause = true;
 
                     // Отображаем диалоговое окно проигрыша, со счётом и кнопками новой игры или выхода из игры
-                    gameOver_slideSprite.gameObject.transform.localPosition = new Vector3(3.93f, 1.54f, -7.78f);
+                    gameOver_slideSprite.gameObject.transform.localPosition = new Vector3(3.93f, 1.713f, -7.78f);
 
                     print("False");
-                    Setting.EditRecord(0);
+                    
                 }
                 correct_cup = null;
                 count_moves = count_moves_def;

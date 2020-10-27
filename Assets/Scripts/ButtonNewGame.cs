@@ -24,6 +24,7 @@ public class ButtonNewGame : MonoBehaviour
         gameOver_slideSprite.gameObject.transform.localPosition = new Vector3(-0.38f, 3.747f, -7.034f);
 
         // Начинаем игру заново
+        Setting.EditRecord(0);
         Game.StepGame = 1;
         Setting.StartGame = true;
         Setting.pause = false;
