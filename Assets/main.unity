@@ -1474,6 +1474,7 @@ GameObject:
   - component: {fileID: 1053639561}
   - component: {fileID: 1053639560}
   - component: {fileID: 1053639559}
+  - component: {fileID: 1053639562}
   m_Layer: 0
   m_Name: button_newGame
   m_TagString: Untagged
@@ -1583,6 +1584,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1053639562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053639557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa9617dc432f2ac4aa2e7b2d54dfd052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOver_slideSprite: {fileID: 1153149345}
 --- !u!1 &1075220823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1680,7 +1694,7 @@ GameObject:
   - component: {fileID: 1153149346}
   - component: {fileID: 1153149345}
   m_Layer: 0
-  m_Name: newGame_slide
+  m_Name: GameOver_slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2587,6 +2601,7 @@ MonoBehaviour:
   Cup_3: {fileID: 357349375}
   "\u0441orrectAnswerSprite": {fileID: 1391498145}
   notCorrectAnswerSprite: {fileID: 683593725}
+  gameOver_slideSprite: {fileID: 1153149345}
 --- !u!1 &1649971984
 GameObject:
   m_ObjectHideFlags: 0
