@@ -2311,6 +2311,7 @@ GameObject:
   - component: {fileID: 1467177834}
   - component: {fileID: 1467177833}
   - component: {fileID: 1467177832}
+  - component: {fileID: 1467177835}
   m_Layer: 0
   m_Name: button_exitFromGame
   m_TagString: Untagged
@@ -2420,6 +2421,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1467177835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467177830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7995496c66ef5394fab9f5d6372fc065, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainCamera: {fileID: 1735822001}
+  settingsSprite: {fileID: 1153149345}
 --- !u!1 &1586057798
 GameObject:
   m_ObjectHideFlags: 0
