@@ -2585,6 +2585,8 @@ MonoBehaviour:
   Cup_1: {fileID: 634248116}
   Cup_2: {fileID: 703627307}
   Cup_3: {fileID: 357349375}
+  "\u0441orrectAnswerSprite": {fileID: 1391498145}
+  notCorrectAnswerSprite: {fileID: 683593725}
 --- !u!1 &1649971984
 GameObject:
   m_ObjectHideFlags: 0

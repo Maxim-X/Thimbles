@@ -10,6 +10,13 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject Cup_2 = null;
     [SerializeField] private GameObject Cup_3 = null;
 
+    [SerializeField] private SpriteRenderer сorrectAnswerSprite = null;
+    [SerializeField] private SpriteRenderer notCorrectAnswerSprite = null;
+
+    // Это сопрограмма 
+    // Документация, показывающая как это работает: https://docs.unity3d.com/ru/current/ScriptReference/MonoBehaviour.StartCoroutine.html
+    private IEnumerator coroutine;
+
     private GameObject correct_cup = null;
     private GameObject choiceCup;
     GameObject[] AllCup = null;
@@ -126,11 +133,21 @@ public class Game : MonoBehaviour
             {
                 if (choiceCup == correct_cup)
                 {
+                    // Запускаем сопрограмму
+                    coroutine = ShowAnswerAfterTime(1.0f, true);
+                    // Отображаем иконку правильного ответа на секунду
+                    StartCoroutine(coroutine);
+
                     print("True");
                     Setting.EditRecord(Setting.current_record + 1);
                 }
                 else
                 {
+                    // Запускаем сопрограмму
+                    coroutine = ShowAnswerAfterTime(1.0f, false);
+                    // Отображаем иконку неправильного ответа на секунду
+                    StartCoroutine(coroutine);
+
                     print("False");
                     Setting.EditRecord(0);
                 }
@@ -163,5 +180,28 @@ public class Game : MonoBehaviour
     void OnMouseUp()
     {
         newScaleButton = new Vector3(1f, 1f, 1f);
+    }
+
+    //Таймер с точностью до секунды, отображающий иконку правильного/неправильного ответа
+    IEnumerator ShowAnswerAfterTime(float timeInSec, bool IsCorrectAnswer)
+    {
+        if (IsCorrectAnswer)
+        {
+            // Отображаем инонку правильного ответа
+            сorrectAnswerSprite.gameObject.transform.localPosition = new Vector3(3.94f, 1.86f, -7.62f);
+            // Ждём нужное время в секундах
+            yield return new WaitForSeconds(timeInSec);
+            // Прячем инонку правильного ответа
+            сorrectAnswerSprite.gameObject.transform.localPosition = new Vector3(1.125f, 4.003f, -6.882f);
+        }
+        else
+        {
+            // Отображаем инонку неправильного ответа
+            notCorrectAnswerSprite.gameObject.transform.localPosition = new Vector3(3.94f, 1.86f, -7.62f);
+            // Ждём нужное время в секундах
+            yield return new WaitForSeconds(timeInSec);
+            // Прячем инонку неправильного ответа
+            notCorrectAnswerSprite.gameObject.transform.localPosition = new Vector3(1.347f, 4.003f, -6.882f);
+        }
     }
 }
