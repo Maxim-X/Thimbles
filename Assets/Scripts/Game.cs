@@ -10,8 +10,12 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject Cup_2 = null;
     [SerializeField] private GameObject Cup_3 = null;
 
+    // Иконки правильного/неправильного ответа
     [SerializeField] private SpriteRenderer сorrectAnswerSprite = null;
     [SerializeField] private SpriteRenderer notCorrectAnswerSprite = null;
+
+    // Диалоговое окно проигрыша
+    [SerializeField] private SpriteRenderer gameOver_slideSprite = null;
 
     // Это сопрограмма 
     // Документация, показывающая как это работает: https://docs.unity3d.com/ru/current/ScriptReference/MonoBehaviour.StartCoroutine.html
@@ -23,7 +27,7 @@ public class Game : MonoBehaviour
     private SpriteRenderer button;
     private Vector3 newScaleButton = new Vector3(1f, 1f, 1f);
     private bool animationEditScale = false;
-    private int StepGame = 1;
+    public static int StepGame = 1;
     private Vector3 cup_1_coord;
     private Vector3 cup_2_coord;
 
@@ -62,6 +66,7 @@ public class Game : MonoBehaviour
 
         if (Setting.StartGame && !Setting.pause)
         {
+            print(StepGame);
             if (StepGame == 1) // Меняем местами стаканчики
             {
 
@@ -140,6 +145,7 @@ public class Game : MonoBehaviour
 
                     print("True");
                     Setting.EditRecord(Setting.current_record + 1);
+                    
                 }
                 else
                 {
@@ -147,6 +153,12 @@ public class Game : MonoBehaviour
                     coroutine = ShowAnswerAfterTime(1.0f, false);
                     // Отображаем иконку неправильного ответа на секунду
                     StartCoroutine(coroutine);
+
+                    Setting.StartGame = false;
+                    Setting.pause = true;
+
+                    // Отображаем диалоговое окно проигрыша, со счётом и кнопками новой игры или выхода из игры
+                    gameOver_slideSprite.gameObject.transform.localPosition = new Vector3(3.93f, 1.54f, -7.78f);
 
                     print("False");
                     Setting.EditRecord(0);
