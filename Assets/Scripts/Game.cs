@@ -27,7 +27,7 @@ public class Game : MonoBehaviour
     private SpriteRenderer button;
     private Vector3 newScaleButton = new Vector3(1f, 1f, 1f);
     private bool animationEditScale = false;
-    public static int StepGame = 1;
+    public static int StepGame = 0;
     private Vector3 cup_1_coord;
     private Vector3 cup_2_coord;
 
@@ -39,6 +39,11 @@ public class Game : MonoBehaviour
 
     private float x_pre_1; // Предыдущий x передвижения
     private float x_pre_2; // Предыдущий x передвижения
+
+
+    private float correct_cup_y_pre; // Предыдущий y передвижения
+    private Vector3 coord_correct_cup_raise;
+    private Vector3 coord_correct_cup_def;
 
 
 
@@ -59,22 +64,50 @@ public class Game : MonoBehaviour
             Cup_1.transform.localPosition = Setting.def_position_cup_1;
             Cup_2.transform.localPosition = Setting.def_position_cup_2;
             Cup_3.transform.localPosition = Setting.def_position_cup_3;
-            StepGame = 1;
+            StepGame = 0;
             count_moves = count_moves_def;
         }
 
 
         if (Setting.StartGame && !Setting.pause)
         {
-            print(StepGame);
-            if (StepGame == 1) // Меняем местами стаканчики
+            if (StepGame == 0)
             {
-
-                if(correct_cup == null)
+                if (correct_cup == null) // выбираем правельный стаканчик
                 {
-                    correct_cup = AllCup[UnityEngine.Random.Range(0, 3)]; // правельный стаканчик
-                }
+                    print("0");
+                    correct_cup = AllCup[UnityEngine.Random.Range(0, 3)];
 
+                    coord_correct_cup_raise = new Vector3(correct_cup.transform.localPosition.x, correct_cup.transform.localPosition.y + 0.5f , correct_cup.transform.localPosition.z);
+                    coord_correct_cup_def = correct_cup.transform.localPosition;
+
+                }
+                else // поднимаем правильный стаканчик
+                {
+
+                    correct_cup.transform.localPosition = Vector3.Lerp(correct_cup.transform.localPosition, coord_correct_cup_raise, Time.deltaTime + 0.07f);
+
+                    if (correct_cup_y_pre == correct_cup.transform.localPosition.y)
+                    {
+                        if(coord_correct_cup_raise != coord_correct_cup_def)
+                        {
+                            coord_correct_cup_raise = new Vector3(correct_cup.transform.localPosition.x, correct_cup.transform.localPosition.y - 0.5f, correct_cup.transform.localPosition.z);
+                        }
+                        else
+                        {
+                            correct_cup_y_pre = 0;
+                            StepGame = StepGame + 1;
+                        }
+                    }
+                    else
+                    {
+                        correct_cup_y_pre = correct_cup.transform.localPosition.y;
+                    }
+                    
+                }
+            }
+            else if (StepGame == 1) // Меняем местами стаканчики
+            {
 
                 if(UseCup_1 == null && UseCup_2 == null)
                 {
@@ -131,7 +164,6 @@ public class Game : MonoBehaviour
 
                 if (choiceCup != null)
                 {
-                    print(choiceCup);
                     StepGame = StepGame + 1;
                 }
             }
@@ -164,7 +196,7 @@ public class Game : MonoBehaviour
                 }
                 correct_cup = null;
                 count_moves = count_moves_def;
-                StepGame = 1;
+                StepGame = 0;
                 ChoiceCup.choiceCup = null;
             }
         }

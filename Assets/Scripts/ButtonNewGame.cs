@@ -25,7 +25,7 @@ public class ButtonNewGame : MonoBehaviour
 
         // Начинаем игру заново
         Setting.EditRecord(0);
-        Game.StepGame = 1;
+        Game.StepGame = 0;
         Setting.StartGame = true;
         Setting.pause = false;
     }
