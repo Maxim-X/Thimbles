@@ -75,12 +75,13 @@ public class Game : MonoBehaviour
             {
                 if (correct_cup == null) // выбираем правельный стаканчик
                 {
-                    print("0");
+                    Cup_1.transform.localPosition = Setting.def_position_cup_1;
+                    Cup_2.transform.localPosition = Setting.def_position_cup_2;
+                    Cup_3.transform.localPosition = Setting.def_position_cup_3;
                     correct_cup = AllCup[UnityEngine.Random.Range(0, 3)];
 
                     coord_correct_cup_raise = new Vector3(correct_cup.transform.localPosition.x, correct_cup.transform.localPosition.y + 0.5f , correct_cup.transform.localPosition.z);
                     coord_correct_cup_def = correct_cup.transform.localPosition;
-
                 }
                 else // поднимаем правильный стаканчик
                 {
