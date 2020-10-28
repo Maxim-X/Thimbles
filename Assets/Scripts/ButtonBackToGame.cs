@@ -5,6 +5,8 @@ using UnityEngine;
 public class ButtonBackToGame : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer settingsSprite = null;
+    // Кнопка настроек
+    [SerializeField] private SpriteRenderer settings_buttonSprite = null;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,9 @@ public class ButtonBackToGame : MonoBehaviour
     void OnMouseUp()
     {
         Setting.pause = false;
+        // Прячем слайд настроек
         settingsSprite.gameObject.transform.localPosition = new Vector3(0.0984f, 3.89f, -6.9f);
+        // Показываем кнопку настроек
+        settings_buttonSprite.gameObject.transform.localPosition = new Vector3(2.99874f, 2.43f, -3.76f);
     }
 }

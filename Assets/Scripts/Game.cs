@@ -14,6 +14,9 @@ public class Game : MonoBehaviour
     [SerializeField] private SpriteRenderer сorrectAnswerSprite = null;
     [SerializeField] private SpriteRenderer notCorrectAnswerSprite = null;
 
+    // Кнопка настроек
+    [SerializeField] private SpriteRenderer settings_buttonSprite = null;
+
     // Диалоговое окно проигрыша
     [SerializeField] private SpriteRenderer gameOver_slideSprite = null;
 
@@ -75,9 +78,9 @@ public class Game : MonoBehaviour
             {
                 if (correct_cup == null) // выбираем правельный стаканчик
                 {
-                    Cup_1.transform.localPosition = Setting.def_position_cup_1;
-                    Cup_2.transform.localPosition = Setting.def_position_cup_2;
-                    Cup_3.transform.localPosition = Setting.def_position_cup_3;
+                    //Cup_1.transform.localPosition = Setting.def_position_cup_1;
+                    //Cup_2.transform.localPosition = Setting.def_position_cup_2;
+                    //Cup_3.transform.localPosition = Setting.def_position_cup_3;
                     correct_cup = AllCup[UnityEngine.Random.Range(0, 3)];
 
                     coord_correct_cup_raise = new Vector3(correct_cup.transform.localPosition.x, correct_cup.transform.localPosition.y + 0.5f , correct_cup.transform.localPosition.z);
@@ -188,6 +191,9 @@ public class Game : MonoBehaviour
 
                     Setting.StartGame = false;
                     Setting.pause = true;
+
+                    // Прячем кнопку настроек
+                    settings_buttonSprite.gameObject.transform.localPosition = new Vector3(0f, 0f, 0f);
 
                     // Отображаем диалоговое окно проигрыша, со счётом и кнопками новой игры или выхода из игры
                     gameOver_slideSprite.gameObject.transform.localPosition = new Vector3(3.93f, 1.547f, -7.79f);

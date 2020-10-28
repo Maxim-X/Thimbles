@@ -6,6 +6,9 @@ public class ButtonBackToMainMenu : MonoBehaviour
 {
     [SerializeField] private Camera MainCamera = null;
     [SerializeField] private SpriteRenderer settingsSprite = null;
+    // Кнопка настроек
+    [SerializeField] private SpriteRenderer settings_buttonSprite = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +28,8 @@ public class ButtonBackToMainMenu : MonoBehaviour
         Setting.pause = false;
         MainCamera.transform.localPosition = new Vector3(-6.17f, 1.903f, -8.329f);
         settingsSprite.gameObject.transform.localPosition = new Vector3(0.0984f, 3.89f, -6.9f);
+
+        // Показываем кнопку настроек
+        settings_buttonSprite.gameObject.transform.localPosition = new Vector3(2.99874f, 2.43f, -3.76f);
     }
 }
