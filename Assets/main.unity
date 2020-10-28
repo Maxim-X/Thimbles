@@ -1490,8 +1490,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053639557}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -0.39, z: -0.25}
-  m_LocalScale: {x: 0.98859847, y: 1.0878687, z: 1.0878687}
+  m_LocalPosition: {x: -0.01, y: -0.3, z: -0.42}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1153149346}
   m_RootOrder: 0
@@ -1758,7 +1758,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153149344}
   m_LocalRotation: {x: 0.163524, y: 0, z: 0, w: 0.98653936}
-  m_LocalPosition: {x: -0.38, y: 3.747, z: -7.034}
+  m_LocalPosition: {x: -0.38, y: 3.753, z: -7.032}
   m_LocalScale: {x: 0.116121404, y: 0.116121404, z: 0.116121404}
   m_Children:
   - {fileID: 1053639558}
@@ -2851,7 +2851,6 @@ MonoBehaviour:
   cup_1: {fileID: 634248116}
   cup_2: {fileID: 703627307}
   cup_3: {fileID: 357349375}
-  points_TextMeshPro: {fileID: 1274455544}
 --- !u!1 &1757379716
 GameObject:
   m_ObjectHideFlags: 0
@@ -3090,8 +3089,8 @@ GameObject:
   - component: {fileID: 2011496937}
   - component: {fileID: 2011496941}
   - component: {fileID: 2011496940}
-  - component: {fileID: 2011496939}
   - component: {fileID: 2011496938}
+  - component: {fileID: 2011496939}
   m_Layer: 0
   m_Name: button_exitFromGame
   m_TagString: Untagged
@@ -3107,8 +3106,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011496936}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -1.086, z: -0.25}
-  m_LocalScale: {x: 0.98859847, y: 1.0878687, z: 1.0878687}
+  m_LocalPosition: {x: -0.006, y: -0.915, z: -0.42}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1153149346}
   m_RootOrder: 1
