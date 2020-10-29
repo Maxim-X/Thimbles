@@ -1449,7 +1449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1307, y: 362}
+  m_AnchoredPosition: {x: 1304, y: 231}
   m_SizeDelta: {x: 146.45, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &642603020
@@ -1465,19 +1465,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.003921569, g: 0.003921569, b: 0.003921569, a: 0.78431374}
+  m_Color: {r: 0.58431375, g: 0.6, b: 0.6156863, a: 0.78431374}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 59
+    m_Font: {fileID: 12800000, guid: 450e947c0c7b8de4c9daa3fc5d42b2c1, type: 3}
+    m_FontSize: 55
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 109
+    m_MaxSize: 137
     m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1730,6 +1730,7 @@ MonoBehaviour:
   MainCamera: {fileID: 1735822001}
   settingsSprite: {fileID: 1075220824}
   settings_buttonSprite: {fileID: 0}
+  pointsCount_Sprite: {fileID: 0}
 --- !u!212 &728667844
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2101,6 +2102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOver_slideSprite: {fileID: 1153149345}
   settings_buttonSprite: {fileID: 1757379719}
+  pointsCount_Sprite: {fileID: 2037985026}
 --- !u!1 &1075220823
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,7 +2308,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1333, y: 361.99973}
+  m_AnchoredPosition: {x: 1358, y: 361.99973}
   m_SizeDelta: {x: 146.45, y: 40.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1179621447
@@ -2322,15 +2324,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.003921569, g: 0.003921569, b: 0.003921569, a: 0.78431374}
+  m_Color: {r: 0.5803922, g: 0.6117647, b: 0.6156863, a: 0.78431374}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 34
+    m_Font: {fileID: 12800000, guid: 450e947c0c7b8de4c9daa3fc5d42b2c1, type: 3}
+    m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -2437,7 +2439,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262579503}
   m_LocalRotation: {x: 0.163524, y: 0, z: 0, w: 0.98653936}
-  m_LocalPosition: {x: 0, y: 0, z: -3.112}
+  m_LocalPosition: {x: 0, y: 0, z: -3.3700001}
   m_LocalScale: {x: 0.0029259736, y: 0.0003687492, z: 0.1273147}
   m_Children:
   - {fileID: 642603019}
@@ -2446,7 +2448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 18.823, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.01, y: 2.129}
+  m_AnchoredPosition: {x: -1.24, y: 1.37}
   m_SizeDelta: {x: 285.2, y: 1187.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1274455542
@@ -2711,7 +2713,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278848212}
   m_LocalRotation: {x: 0.163524, y: 0, z: 0, w: 0.98653936}
-  m_LocalPosition: {x: 0, y: 0, z: -2.9980001}
+  m_LocalPosition: {x: 0, y: 0, z: -3.26}
   m_LocalScale: {x: 0.0029259736, y: 0.0003687492, z: 0.1273147}
   m_Children:
   - {fileID: 1179621446}
@@ -2720,7 +2722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 18.823, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.01, y: 2.464}
+  m_AnchoredPosition: {x: -1.04, y: 1.71}
   m_SizeDelta: {x: 285.2, y: 736}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1346395271
@@ -3148,6 +3150,7 @@ MonoBehaviour:
   "\u0441orrectAnswerSprite": {fileID: 1391498145}
   notCorrectAnswerSprite: {fileID: 683593725}
   settings_buttonSprite: {fileID: 1757379719}
+  pointsCount_Sprite: {fileID: 2037985026}
   gameOver_slideSprite: {fileID: 1153149345}
 --- !u!1 &1649971984
 GameObject:
@@ -3741,7 +3744,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.76, y: 0.65}
+  m_Size: {x: 0.5, y: 0.65}
   m_EdgeRadius: 0
 --- !u!114 &1757379718
 MonoBehaviour:
@@ -4055,6 +4058,7 @@ MonoBehaviour:
   MainCamera: {fileID: 1735822001}
   settingsSprite: {fileID: 1153149345}
   settings_buttonSprite: {fileID: 1757379719}
+  pointsCount_Sprite: {fileID: 2037985026}
 --- !u!114 &2011496939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4354,7 +4358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037985025}
   m_LocalRotation: {x: 0.163524, y: 0, z: 0, w: 0.98653936}
-  m_LocalPosition: {x: 3.8707, y: 2.436, z: -3.702}
+  m_LocalPosition: {x: 4.1, y: 2.436, z: -3.702}
   m_LocalScale: {x: 0.88972646, y: 1, z: 1}
   m_Children:
   - {fileID: 519911109}

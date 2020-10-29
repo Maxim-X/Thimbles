@@ -16,6 +16,8 @@ public class Game : MonoBehaviour
 
     // Кнопка настроек
     [SerializeField] private SpriteRenderer settings_buttonSprite = null;
+    // Слайд с количество очков
+    [SerializeField] private SpriteRenderer pointsCount_Sprite = null;
 
     // Диалоговое окно проигрыша
     [SerializeField] private SpriteRenderer gameOver_slideSprite = null;
@@ -194,6 +196,8 @@ public class Game : MonoBehaviour
 
                     // Прячем кнопку настроек
                     settings_buttonSprite.gameObject.transform.localPosition = new Vector3(0f, 0f, 0f);
+                    // Прячем слайд с количеством очков
+                    pointsCount_Sprite.gameObject.transform.localPosition = new Vector3(0f, 0f, 0f);
 
                     // Отображаем диалоговое окно проигрыша, со счётом и кнопками новой игры или выхода из игры
                     gameOver_slideSprite.gameObject.transform.localPosition = new Vector3(3.93f, 1.547f, -7.79f);

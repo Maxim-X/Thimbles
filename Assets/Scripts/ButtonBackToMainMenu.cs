@@ -8,6 +8,8 @@ public class ButtonBackToMainMenu : MonoBehaviour
     [SerializeField] private SpriteRenderer settingsSprite = null;
     // Кнопка настроек
     [SerializeField] private SpriteRenderer settings_buttonSprite = null;
+    // Слайд с количество очков
+    [SerializeField] private SpriteRenderer pointsCount_Sprite = null;
 
     // Start is called before the first frame update
     void Start()
@@ -31,5 +33,7 @@ public class ButtonBackToMainMenu : MonoBehaviour
 
         // Показываем кнопку настроек
         settings_buttonSprite.gameObject.transform.localPosition = new Vector3(2.99874f, 2.43f, -3.76f);
+        // Показываем слайд с количеством очков
+        pointsCount_Sprite.gameObject.transform.localPosition = new Vector3(4.1f, 2.436f, -3.702f);
     }
 }
