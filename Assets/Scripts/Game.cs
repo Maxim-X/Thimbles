@@ -50,6 +50,7 @@ public class Game : MonoBehaviour
     private Vector3 coord_correct_cup_raise;
     private Vector3 coord_correct_cup_def;
 
+    int timer_start = 0;
 
 
     // Start is called before the first frame update
@@ -71,6 +72,7 @@ public class Game : MonoBehaviour
             Cup_3.transform.localPosition = Setting.def_position_cup_3;
             StepGame = 0;
             count_moves = count_moves_def;
+            timer_start = 0;
         }
 
 
@@ -78,39 +80,44 @@ public class Game : MonoBehaviour
         {
             if (StepGame == 0)
             {
-                if (correct_cup == null) // выбираем правельный стаканчик
+                if (timer_start >= 100)
                 {
-                    //Cup_1.transform.localPosition = Setting.def_position_cup_1;
-                    //Cup_2.transform.localPosition = Setting.def_position_cup_2;
-                    //Cup_3.transform.localPosition = Setting.def_position_cup_3;
-                    correct_cup = AllCup[UnityEngine.Random.Range(0, 3)];
-
-                    coord_correct_cup_raise = new Vector3(correct_cup.transform.localPosition.x, correct_cup.transform.localPosition.y + 0.5f , correct_cup.transform.localPosition.z);
-                    coord_correct_cup_def = correct_cup.transform.localPosition;
-                }
-                else // поднимаем правильный стаканчик
-                {
-
-                    correct_cup.transform.localPosition = Vector3.Lerp(correct_cup.transform.localPosition, coord_correct_cup_raise, Time.deltaTime + 0.07f);
-
-                    if (correct_cup_y_pre == correct_cup.transform.localPosition.y)
+                    if (correct_cup == null) // выбираем правельный стаканчик
                     {
-                        if(coord_correct_cup_raise != coord_correct_cup_def)
+                        //Cup_1.transform.localPosition = Setting.def_position_cup_1;
+                        //Cup_2.transform.localPosition = Setting.def_position_cup_2;
+                        //Cup_3.transform.localPosition = Setting.def_position_cup_3;
+                        correct_cup = AllCup[UnityEngine.Random.Range(0, 3)];
+
+                        coord_correct_cup_raise = new Vector3(correct_cup.transform.localPosition.x, correct_cup.transform.localPosition.y + 0.5f, correct_cup.transform.localPosition.z);
+                        coord_correct_cup_def = correct_cup.transform.localPosition;
+                        timer_start = 0;
+                    }
+                    else // поднимаем правильный стаканчик
+                    {
+
+                        correct_cup.transform.localPosition = Vector3.Lerp(correct_cup.transform.localPosition, coord_correct_cup_raise, Time.deltaTime + 0.07f);
+
+                        if (correct_cup_y_pre == correct_cup.transform.localPosition.y)
                         {
-                            coord_correct_cup_raise = new Vector3(correct_cup.transform.localPosition.x, correct_cup.transform.localPosition.y - 0.5f, correct_cup.transform.localPosition.z);
+                            if (coord_correct_cup_raise != coord_correct_cup_def)
+                            {
+                                coord_correct_cup_raise = new Vector3(correct_cup.transform.localPosition.x, correct_cup.transform.localPosition.y - 0.5f, correct_cup.transform.localPosition.z);
+                            }
+                            else
+                            {
+                                correct_cup_y_pre = 0;
+                                StepGame = StepGame + 1;
+                            }
                         }
                         else
                         {
-                            correct_cup_y_pre = 0;
-                            StepGame = StepGame + 1;
+                            correct_cup_y_pre = correct_cup.transform.localPosition.y;
                         }
+
                     }
-                    else
-                    {
-                        correct_cup_y_pre = correct_cup.transform.localPosition.y;
-                    }
-                    
                 }
+                else { timer_start += 1; }
             }
             else if (StepGame == 1) // Меняем местами стаканчики
             {
@@ -167,10 +174,38 @@ public class Game : MonoBehaviour
             else if (StepGame == 2) // Даем пользователю выбрать стаканчик
             {
                 choiceCup = ChoiceCup.choiceCup;
-
+                print(choiceCup);
                 if (choiceCup != null)
                 {
-                    StepGame = StepGame + 1;
+                    if (correct_cup_y_pre == 0)
+                    {
+                        coord_correct_cup_raise = new Vector3(choiceCup.transform.localPosition.x, choiceCup.transform.localPosition.y + 0.5f, choiceCup.transform.localPosition.z);
+                        coord_correct_cup_def = choiceCup.transform.localPosition;
+                        correct_cup_y_pre = 1;
+                    }
+                    else // поднимаем правильный стаканчик
+                    {
+
+                        choiceCup.transform.localPosition = Vector3.Lerp(choiceCup.transform.localPosition, coord_correct_cup_raise, Time.deltaTime + 0.07f);
+
+                        if (correct_cup_y_pre == choiceCup.transform.localPosition.y)
+                        {
+                            if (coord_correct_cup_raise != coord_correct_cup_def)
+                            {
+                                coord_correct_cup_raise = new Vector3(choiceCup.transform.localPosition.x, choiceCup.transform.localPosition.y - 0.5f, choiceCup.transform.localPosition.z);
+                            }
+                            else
+                            {
+                                correct_cup_y_pre = 0;
+                                StepGame = StepGame + 1;
+                            }
+                        }
+                        else
+                        {
+                            correct_cup_y_pre = choiceCup.transform.localPosition.y;
+                        }
+                    }
+                    //StepGame = StepGame + 1;
                 }
             }
             else if (StepGame == 3) // Проверяем правильность ответа
