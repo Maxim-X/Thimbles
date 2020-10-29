@@ -174,7 +174,6 @@ public class Game : MonoBehaviour
             else if (StepGame == 2) // Даем пользователю выбрать стаканчик
             {
                 choiceCup = ChoiceCup.choiceCup;
-                print(choiceCup);
                 if (choiceCup != null)
                 {
                     if (correct_cup_y_pre == 0)
