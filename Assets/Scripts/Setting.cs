@@ -34,7 +34,7 @@ public class Setting : MonoBehaviour
         def_position_cup_2 = cup_2.transform.localPosition;
         def_position_cup_3 = cup_3.transform.localPosition;
         def_position_ball = ball.transform.localPosition;
-        points_TextMeshPro = GameObject.FindWithTag("Points").GetComponent<TextMeshPro>();
+        points_TextMeshPro = GameObject.FindWithTag("GamePoints").GetComponent<TextMeshPro>();
         stat = GameObject.FindWithTag("Stats").GetComponent<Text>();
         stat.text = max_record.ToString();
     }
