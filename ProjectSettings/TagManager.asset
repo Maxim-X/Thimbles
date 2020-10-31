@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Stats
   - Points
+  - GamePoints
   layers:
   - Default
   - TransparentFX
