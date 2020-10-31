@@ -1827,8 +1827,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 1735822001}
   settingsSprite: {fileID: 1075220824}
-  settings_buttonSprite: {fileID: 0}
-  pointsCount_Sprite: {fileID: 0}
+  settings_buttonSprite: {fileID: 1757379719}
+  pointsCount_Sprite: {fileID: 2037985026}
 --- !u!212 &728667844
 SpriteRenderer:
   m_ObjectHideFlags: 0

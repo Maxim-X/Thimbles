@@ -13,8 +13,11 @@ public class Setting : MonoBehaviour
     [SerializeField] private GameObject cup_2 = null;
     [SerializeField] private GameObject cup_3 = null;
     [SerializeField] private GameObject ball = null;
-    // Текст в диалоговом окне с количеством очков
-    public static TextMeshPro points_TextMeshPro = null;
+
+    // количество очков, отображаемое во время игры
+    public static TextMeshPro pointsAtGame_TextMeshPro = null;
+    // Текст в диалоговом окне проигрыша с количеством очков
+    public static TextMeshPro pointsAtGameOverSprite_TextMeshPro = null;
 
     public static Text stat = null;
 
@@ -34,7 +37,8 @@ public class Setting : MonoBehaviour
         def_position_cup_2 = cup_2.transform.localPosition;
         def_position_cup_3 = cup_3.transform.localPosition;
         def_position_ball = ball.transform.localPosition;
-        points_TextMeshPro = GameObject.FindWithTag("GamePoints").GetComponent<TextMeshPro>();
+        pointsAtGame_TextMeshPro = GameObject.FindWithTag("GamePoints").GetComponent<TextMeshPro>();
+        pointsAtGameOverSprite_TextMeshPro = GameObject.FindWithTag("Points").GetComponent<TextMeshPro>();
         stat = GameObject.FindWithTag("Stats").GetComponent<Text>();
         stat.text = max_record.ToString();
     }
@@ -53,6 +57,7 @@ public class Setting : MonoBehaviour
             max_record = newRec;
         }
         stat.text = max_record.ToString();
-        points_TextMeshPro.text = current_record.ToString();
+        pointsAtGame_TextMeshPro.text = current_record.ToString();
+        pointsAtGameOverSprite_TextMeshPro.text = current_record.ToString();
     }
 }
