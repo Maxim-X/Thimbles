@@ -11,10 +11,22 @@ public class ButtonSound : MonoBehaviour
     // Включен ли звук в игре
     private bool isTheSoundTurnedOn = true;
 
+    public AudioClip[] treks;
+
     // Start is called before the first frame update
     void Start()
     {
         button = GetComponent<SpriteRenderer>();
+        // Запускаем трек
+        if (isTheSoundTurnedOn == true)
+        {
+            GetComponent<AudioSource>().Play();
+        }
+        else
+        {
+            GetComponent<AudioSource>().Stop();
+        }
+        
     }
 
     // Update is called once per frame
@@ -28,6 +40,7 @@ public class ButtonSound : MonoBehaviour
         {
             // Выключаем звук в игре
             AudioListener.volume = 0;
+            
             // Меняем картинку у кнопки на "button_soundOFF"
             button.sprite = spriteSoundOff;
 
