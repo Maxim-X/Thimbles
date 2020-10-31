@@ -9,6 +9,7 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject Cup_1 = null;
     [SerializeField] private GameObject Cup_2 = null;
     [SerializeField] private GameObject Cup_3 = null;
+    [SerializeField] private GameObject ball = null;
 
     // Иконки правильного/неправильного ответа
     [SerializeField] private SpriteRenderer сorrectAnswerSprite = null;
@@ -88,7 +89,7 @@ public class Game : MonoBehaviour
                         //Cup_2.transform.localPosition = Setting.def_position_cup_2;
                         //Cup_3.transform.localPosition = Setting.def_position_cup_3;
                         correct_cup = AllCup[UnityEngine.Random.Range(0, 3)];
-
+                        ball.transform.localPosition = correct_cup.transform.localPosition;
                         coord_correct_cup_raise = new Vector3(correct_cup.transform.localPosition.x, correct_cup.transform.localPosition.y + 0.5f, correct_cup.transform.localPosition.z);
                         coord_correct_cup_def = correct_cup.transform.localPosition;
                         timer_start = 0;
@@ -107,6 +108,7 @@ public class Game : MonoBehaviour
                             else
                             {
                                 correct_cup_y_pre = 0;
+                                ball.transform.localPosition = Setting.def_position_ball;
                                 StepGame = StepGame + 1;
                             }
                         }
@@ -181,6 +183,7 @@ public class Game : MonoBehaviour
                         coord_correct_cup_raise = new Vector3(choiceCup.transform.localPosition.x, choiceCup.transform.localPosition.y + 0.5f, choiceCup.transform.localPosition.z);
                         coord_correct_cup_def = choiceCup.transform.localPosition;
                         correct_cup_y_pre = 1;
+                        ball.transform.localPosition = correct_cup.transform.localPosition;
                     }
                     else // поднимаем правильный стаканчик
                     {
