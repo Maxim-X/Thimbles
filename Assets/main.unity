@@ -3245,7 +3245,7 @@ MonoBehaviour:
   Cup_1: {fileID: 634248116}
   Cup_2: {fileID: 703627307}
   Cup_3: {fileID: 357349375}
-  ball: {fileID: 0}
+  ball: {fileID: 253510234}
   "\u0441orrectAnswerSprite": {fileID: 1391498145}
   notCorrectAnswerSprite: {fileID: 683593725}
   settings_buttonSprite: {fileID: 1757379719}
@@ -3859,7 +3859,7 @@ MonoBehaviour:
   cup_1: {fileID: 634248116}
   cup_2: {fileID: 703627307}
   cup_3: {fileID: 357349375}
-  ball: {fileID: 0}
+  ball: {fileID: 253510234}
 --- !u!82 &1735822004
 AudioSource:
   m_ObjectHideFlags: 0
