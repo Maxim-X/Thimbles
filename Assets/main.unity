@@ -271,9 +271,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 72c73b2e8d3c6be44ac81ab3ae4d89d7, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.185
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1164,7 +1164,7 @@ GameObject:
   - component: {fileID: 519911110}
   m_Layer: 0
   m_Name: text_points (1)
-  m_TagString: GamePoints
+  m_TagString: Points
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3245,7 +3245,7 @@ MonoBehaviour:
   Cup_1: {fileID: 634248116}
   Cup_2: {fileID: 703627307}
   Cup_3: {fileID: 357349375}
-  ball: {fileID: 253510234}
+  ball: {fileID: 0}
   "\u0441orrectAnswerSprite": {fileID: 1391498145}
   notCorrectAnswerSprite: {fileID: 683593725}
   settings_buttonSprite: {fileID: 1757379719}
@@ -3859,7 +3859,7 @@ MonoBehaviour:
   cup_1: {fileID: 634248116}
   cup_2: {fileID: 703627307}
   cup_3: {fileID: 357349375}
-  ball: {fileID: 253510234}
+  ball: {fileID: 0}
 --- !u!82 &1735822004
 AudioSource:
   m_ObjectHideFlags: 0
