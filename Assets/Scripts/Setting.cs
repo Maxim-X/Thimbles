@@ -36,6 +36,10 @@ public class Setting : MonoBehaviour
     public static int cup_moves = 5;
     public static int cup_moves_def = 5;
 
+    public static int maxrecord;
+    public static string records;
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -48,12 +52,21 @@ public class Setting : MonoBehaviour
         pointsAtGameOverSprite_TextMeshPro = GameObject.FindWithTag("Points").GetComponent<TextMeshPro>();
         stat = GameObject.FindWithTag("Stats").GetComponent<TextMeshPro>();
         stat.text = max_record.ToString();
+        
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (current_record > maxrecord)
+        {
+            PlayerPrefs.SetInt("maxrecord", current_record);
+            PlayerPrefs.Save();
+            Debug.Log("Save");
+        }
+        maxrecord = PlayerPrefs.GetInt("maxrecord");
     }
 
     public static void EditRecord(int newRec)
@@ -73,6 +86,9 @@ public class Setting : MonoBehaviour
     public static void SaveRecord()
     {
         print(current_record);
+        print(maxrecord);
+
+        records += " " + current_record;
     }
 
     public static void EditSpeedCup()
