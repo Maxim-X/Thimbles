@@ -34,7 +34,7 @@ public class Setting : MonoBehaviour
     public static int current_record = 0;
     public static int max_record = 1;
 
-    public static float speed_cup = 0.05f;
+    public static float speed_cup = 1f;
     public static int cup_moves = 5;
     public static int cup_moves_def = 5;
 
@@ -55,9 +55,7 @@ public class Setting : MonoBehaviour
         pointsAtGameOverSprite_TextMeshPro = GameObject.FindWithTag("Points").GetComponent<TextMeshPro>();
         stat = GameObject.FindWithTag("Stats").GetComponent<TextMeshPro>();
         stat.text = max_record.ToString();
-        
-        
-
+ 
     }
 
     // Update is called once per frame
@@ -70,6 +68,9 @@ public class Setting : MonoBehaviour
             Debug.Log("Save");
         }
         maxrecord = PlayerPrefs.GetInt("maxrecord");
+        
+
+
     }
 
     public static void EditRecord(int newRec)
@@ -98,7 +99,7 @@ public class Setting : MonoBehaviour
     {
         if (current_record % 5 == 0)
         {
-            speed_cup = (float)(0.05 + ((current_record / 5) * 0.01f));
+            speed_cup = (float)(1 + ((current_record / 5) * 0.01f));
         }
 
     }

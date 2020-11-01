@@ -153,8 +153,8 @@ public class Game : MonoBehaviour
 
 
                 if(UseCup_1 != null && UseCup_2 != null) { // перемещаем стаканчики
-                    UseCup_1.transform.localPosition = Vector3.Lerp(UseCup_1.transform.localPosition, cup_2_coord, Setting.speed_cup);
-                    UseCup_2.transform.localPosition = Vector3.Lerp(UseCup_2.transform.localPosition, cup_1_coord, Setting.speed_cup);
+                    UseCup_1.transform.localPosition = Vector3.Lerp(UseCup_1.transform.localPosition, cup_2_coord, Time.deltaTime + Setting.speed_cup);
+                    UseCup_2.transform.localPosition = Vector3.Lerp(UseCup_2.transform.localPosition, cup_1_coord, Time.deltaTime + Setting.speed_cup);
                 }
 
 
