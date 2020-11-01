@@ -37,8 +37,8 @@ public class Game : MonoBehaviour
     private Vector3 cup_1_coord;
     private Vector3 cup_2_coord;
 
-    private int count_moves = 5;
-    private int count_moves_def = 5;
+    private int count_moves = Setting.cup_moves;
+    private int count_moves_def = Setting.cup_moves_def;
 
     private GameObject UseCup_1 = null;
     private GameObject UseCup_2 = null;
@@ -148,8 +148,8 @@ public class Game : MonoBehaviour
 
 
                 if(UseCup_1 != null && UseCup_2 != null) { // перемещаем стаканчики
-                    UseCup_1.transform.localPosition = Vector3.Lerp(UseCup_1.transform.localPosition, cup_2_coord, Time.deltaTime + 0.1f);
-                    UseCup_2.transform.localPosition = Vector3.Lerp(UseCup_2.transform.localPosition, cup_1_coord, Time.deltaTime + 0.1f);
+                    UseCup_1.transform.localPosition = Vector3.Lerp(UseCup_1.transform.localPosition, cup_2_coord, Time.deltaTime + Setting.speed_cup);
+                    UseCup_2.transform.localPosition = Vector3.Lerp(UseCup_2.transform.localPosition, cup_1_coord, Time.deltaTime + Setting.speed_cup);
                 }
 
 
@@ -253,7 +253,7 @@ public class Game : MonoBehaviour
                     
                 }
                 correct_cup = null;
-                count_moves = count_moves_def;
+                count_moves = Setting.cup_moves;
                 StepGame = 0;
                 ChoiceCup.choiceCup = null;
                 choiceCup = null;

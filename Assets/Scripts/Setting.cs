@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TMPro;
@@ -30,6 +31,10 @@ public class Setting : MonoBehaviour
     public static int current_record = 0;
     public static int max_record = 1;
 
+    public static float speed_cup = 0.05f;
+    public static int cup_moves = 5;
+    public static int cup_moves_def = 5;
+
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +62,9 @@ public class Setting : MonoBehaviour
         {
             max_record = newRec;
         }
+        EditSpeedCup();
         stat.text = max_record.ToString();
+        EditmovesCup();
         pointsAtGame_TextMeshPro.text = current_record.ToString();
         pointsAtGameOverSprite_TextMeshPro.text = current_record.ToString();
     }
@@ -65,5 +72,22 @@ public class Setting : MonoBehaviour
     public static void SaveRecord()
     {
         print(current_record);
+    }
+
+    public static void EditSpeedCup()
+    {
+        if (current_record % 5 == 0)
+        {
+            speed_cup = (float)(0.05 + ((current_record / 5) * 0.01f));
+        }
+
+    }
+    public static void EditmovesCup()
+    {
+        if (current_record % 3 == 0)
+        {
+            cup_moves = (cup_moves_def + (current_record / 3));
+        }
+
     }
 }
