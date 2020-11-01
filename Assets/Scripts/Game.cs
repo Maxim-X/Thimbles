@@ -299,7 +299,7 @@ public class Game : MonoBehaviour
         if (IsCorrectAnswer)
         {
             // Отображаем инонку правильного ответа
-            сorrectAnswerSprite.gameObject.transform.localPosition = new Vector3(3.94f, 1.86f, -7.62f);
+            сorrectAnswerSprite.gameObject.transform.localPosition = new Vector3(3.93f, 1.72f, -7.62f);
             // Ждём нужное время в секундах
             yield return new WaitForSeconds(timeInSec);
             // Прячем инонку правильного ответа
@@ -308,7 +308,7 @@ public class Game : MonoBehaviour
         else
         {
             // Отображаем инонку неправильного ответа
-            notCorrectAnswerSprite.gameObject.transform.localPosition = new Vector3(3.94f, 1.86f, -7.62f);
+            notCorrectAnswerSprite.gameObject.transform.localPosition = new Vector3(3.93f, 1.72f, -7.62f);
             // Ждём нужное время в секундах
             yield return new WaitForSeconds(timeInSec);
             // Прячем инонку неправильного ответа

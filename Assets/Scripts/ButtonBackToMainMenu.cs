@@ -35,10 +35,10 @@ public class ButtonBackToMainMenu : MonoBehaviour
         settingsSprite.gameObject.transform.localPosition = new Vector3(0.0984f, 3.89f, -6.9f);
 
         // Показываем кнопку настроек
-        settings_buttonSprite.gameObject.transform.localPosition = new Vector3(2.99874f, 2.43f, -3.76f);
+        settings_buttonSprite.gameObject.transform.localPosition = new Vector3(3.147f, 2.43f, -3.76f);
         // Показываем слайд с количеством очков
         pointsCount_Sprite.gameObject.transform.localPosition = new Vector3(4.1f, 2.436f, -3.702f);
         // Показываем рекорд
-        record_TextMeshPro.gameObject.transform.localPosition = new Vector3(3.38f, 1.647f, -4.07f);
+        record_TextMeshPro.gameObject.transform.localPosition = new Vector3(3.535f, 1.647f, -4.07f);
     }
 }
