@@ -77,7 +77,7 @@ public class Game : MonoBehaviour
             Cup_2.transform.localPosition = Setting.def_position_cup_2;
             Cup_3.transform.localPosition = Setting.def_position_cup_3;
             StepGame = 0;
-            count_moves = count_moves_def;
+            count_moves = count_moves_def - 1;
             timer_start = 0;
             correct_cup = null;
         }
@@ -162,8 +162,8 @@ public class Game : MonoBehaviour
                 {
                     if (count_moves != 0)
                     {
-                        count_moves--;
-
+                        
+                        count_moves = count_moves - 1;
                         UseCup_1 = null;
                         UseCup_2 = null;
 
