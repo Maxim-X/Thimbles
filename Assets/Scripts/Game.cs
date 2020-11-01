@@ -74,6 +74,7 @@ public class Game : MonoBehaviour
             StepGame = 0;
             count_moves = count_moves_def;
             timer_start = 0;
+            correct_cup = null;
         }
 
 
@@ -81,6 +82,7 @@ public class Game : MonoBehaviour
         {
             if (StepGame == 0)
             {
+                
                 if (timer_start >= 100)
                 {
                     if (correct_cup == null) // выбираем правельный стаканчик
