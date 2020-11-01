@@ -231,11 +231,10 @@ public class Game : MonoBehaviour
                     // Отображаем иконку правильного ответа на секунду
                     StartCoroutine(coroutine);
 
-                    Setting.EditRecord(Setting.current_record + 1, false);
+                    Setting.EditRecord(Setting.current_record + 1);
                 }
                 else
                 {
-                    Setting.EditRecord(Setting.current_record, true);
                     // Запускаем сопрограмму
                     coroutine = ShowAnswerAfterTime(1.0f, false);
                     // Отображаем иконку неправильного ответа на секунду
@@ -244,8 +243,10 @@ public class Game : MonoBehaviour
                     {
                         Handheld.Vibrate();
                     }
-                    
-                    
+
+                    Setting.SaveRecord(Setting.current_record);
+                    Setting.StartGame = false;
+                    Setting.pause = true;
 
                     // Прячем кнопку настроек
                     settings_buttonSprite.gameObject.transform.localPosition = new Vector3(0f, 0f, 0f);
@@ -256,9 +257,6 @@ public class Game : MonoBehaviour
 
                     // Отображаем диалоговое окно проигрыша, со счётом и кнопками новой игры или выхода из игры
                     gameOver_slideSprite.gameObject.transform.localPosition = new Vector3(3.93f, 1.547f, -7.79f);
-
-                    Setting.StartGame = false;
-                    Setting.pause = true;
                 }
                 
                 correct_cup = null;

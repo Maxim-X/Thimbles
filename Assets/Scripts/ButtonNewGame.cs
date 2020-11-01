@@ -37,7 +37,7 @@ public class ButtonNewGame : MonoBehaviour
         record_TextMeshPro.gameObject.transform.localPosition = new Vector3(3.535f, 1.647f, -4.07f);
 
         // Начинаем игру заново
-        Setting.EditRecord(0, true);
+        Setting.EditRecord(0);
         Game.StepGame = 0;
         Setting.StartGame = true;
         Setting.pause = false;
