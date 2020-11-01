@@ -88,7 +88,7 @@ public class Game : MonoBehaviour
             if (StepGame == 0)
             {
                 print(count_moves);
-                if (timer_start >= 100)
+                if (timer_start >= 25)
                 {
                     if (correct_cup == null) // выбираем правельный стаканчик
                     {
@@ -104,7 +104,7 @@ public class Game : MonoBehaviour
                     else // поднимаем правильный стаканчик
                     {
 
-                        correct_cup.transform.localPosition = Vector3.Lerp(correct_cup.transform.localPosition, coord_correct_cup_raise, Time.deltaTime + 0.07f);
+                        correct_cup.transform.localPosition = Vector3.Lerp(correct_cup.transform.localPosition, coord_correct_cup_raise, Time.deltaTime + 0.15f);
 
                         if (correct_cup_y_pre == correct_cup.transform.localPosition.y)
                         {
@@ -200,7 +200,7 @@ public class Game : MonoBehaviour
                     else // поднимаем правильный стаканчик
                     {
 
-                        choiceCup.transform.localPosition = Vector3.Lerp(choiceCup.transform.localPosition, coord_correct_cup_raise, Time.deltaTime + 0.07f);
+                        choiceCup.transform.localPosition = Vector3.Lerp(choiceCup.transform.localPosition, coord_correct_cup_raise, Time.deltaTime + 0.15f);
 
                         if (correct_cup_y_pre == choiceCup.transform.localPosition.y)
                         {

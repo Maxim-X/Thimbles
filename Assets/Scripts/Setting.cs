@@ -34,7 +34,7 @@ public class Setting : MonoBehaviour
     public static int current_record = 0;
     public static int max_record = 1;
 
-    public static float speed_cup = 1f;
+    public static float speed_cup = 0.25f;
     public static int cup_moves = 5;
     public static int cup_moves_def = 5;
 
@@ -99,7 +99,7 @@ public class Setting : MonoBehaviour
     {
         if (current_record % 5 == 0)
         {
-            speed_cup = (float)(1 + ((current_record / 5) * 0.01f));
+            speed_cup = (float)(0.25 + ((current_record / 5) * 0.02f));
         }
 
     }
