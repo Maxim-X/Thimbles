@@ -1164,7 +1164,7 @@ GameObject:
   - component: {fileID: 519911110}
   m_Layer: 0
   m_Name: text_points (1)
-  m_TagString: Points
+  m_TagString: GamePoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
