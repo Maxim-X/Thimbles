@@ -239,9 +239,11 @@ public class Game : MonoBehaviour
                     coroutine = ShowAnswerAfterTime(1.0f, false);
                     // Отображаем иконку неправильного ответа на секунду
                     StartCoroutine(coroutine);
-
-                    Handheld.Vibrate();
-
+                    if (Setting.Vibrate)
+                    {
+                        Handheld.Vibrate();
+                    }
+                    
                     Setting.SaveRecord();
                     Setting.StartGame = false;
                     Setting.pause = true;
