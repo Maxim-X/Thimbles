@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using TMPro;
 
 public class Game : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class Game : MonoBehaviour
     [SerializeField] private SpriteRenderer settings_buttonSprite = null;
     // Слайд с количество очков
     [SerializeField] private SpriteRenderer pointsCount_Sprite = null;
+    // Текст с нынешним рекордом
+    public static TextMeshPro record_TextMeshPro = null;
 
     // Диалоговое окно проигрыша
     [SerializeField] private SpriteRenderer gameOver_slideSprite = null;
@@ -59,6 +62,8 @@ public class Game : MonoBehaviour
     {
         button = GetComponent<SpriteRenderer>();
         AllCup = new GameObject[] { Cup_1,Cup_2,Cup_3 };
+
+        record_TextMeshPro = GameObject.FindWithTag("Record").GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame
@@ -245,6 +250,8 @@ public class Game : MonoBehaviour
                     settings_buttonSprite.gameObject.transform.localPosition = new Vector3(0f, 0f, 0f);
                     // Прячем слайд с количеством очков
                     pointsCount_Sprite.gameObject.transform.localPosition = new Vector3(0f, 0f, 0f);
+                    // Прячем рекорд
+                    record_TextMeshPro.gameObject.transform.localPosition = new Vector3(0f, 0f, 0f);
 
                     // Отображаем диалоговое окно проигрыша, со счётом и кнопками новой игры или выхода из игры
                     gameOver_slideSprite.gameObject.transform.localPosition = new Vector3(3.93f, 1.547f, -7.79f);

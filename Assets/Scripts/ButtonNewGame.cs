@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ButtonNewGame : MonoBehaviour
@@ -10,11 +11,13 @@ public class ButtonNewGame : MonoBehaviour
     [SerializeField] private SpriteRenderer settings_buttonSprite = null;
     // Слайд с количество очков
     [SerializeField] private SpriteRenderer pointsCount_Sprite = null;
+    // Текст с нынешним рекордом
+    public static TextMeshPro record_TextMeshPro = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        record_TextMeshPro = GameObject.FindWithTag("Record").GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame
@@ -30,6 +33,8 @@ public class ButtonNewGame : MonoBehaviour
         settings_buttonSprite.gameObject.transform.localPosition = new Vector3(2.99874f, 2.43f, -3.76f);
         // Показываем слайд с количеством очков
         pointsCount_Sprite.gameObject.transform.localPosition = new Vector3(4.1f, 2.436f, -3.702f);
+        // Показываем рекорд
+        record_TextMeshPro.gameObject.transform.localPosition = new Vector3(3.38f, 1.647f, -4.07f);
 
         // Начинаем игру заново
         Setting.EditRecord(0);

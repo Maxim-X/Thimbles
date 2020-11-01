@@ -21,7 +21,8 @@ public class Setting : MonoBehaviour
     // Текст в диалоговом окне проигрыша с количеством очков
     public static TextMeshPro pointsAtGameOverSprite_TextMeshPro = null;
 
-    public static Text stat = null;
+    // Нынешний рекорд
+    public static TextMeshPro stat = null;
 
     public static Vector3 def_position_cup_1;
     public static Vector3 def_position_cup_2;
@@ -45,7 +46,7 @@ public class Setting : MonoBehaviour
         def_position_ball = ball.transform.localPosition;
         pointsAtGame_TextMeshPro = GameObject.FindWithTag("GamePoints").GetComponent<TextMeshPro>();
         pointsAtGameOverSprite_TextMeshPro = GameObject.FindWithTag("Points").GetComponent<TextMeshPro>();
-        stat = GameObject.FindWithTag("Stats").GetComponent<Text>();
+        stat = GameObject.FindWithTag("Stats").GetComponent<TextMeshPro>();
         stat.text = max_record.ToString();
     }
 
