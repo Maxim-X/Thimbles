@@ -24,6 +24,8 @@ public class Setting : MonoBehaviour
     // Нынешний рекорд
     public static TextMeshPro stat = null;
 
+    public static bool Vibrate = true;
+
     public static Vector3 def_position_cup_1;
     public static Vector3 def_position_cup_2;
     public static Vector3 def_position_cup_3;
@@ -39,6 +41,7 @@ public class Setting : MonoBehaviour
     public static int maxrecord;
     public static string records;
     
+
 
 
     // Start is called before the first frame update

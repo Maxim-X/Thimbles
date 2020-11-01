@@ -28,7 +28,8 @@ public class ButtonVibration : MonoBehaviour
         if (isTheVibrationTurnedOn)
         {
             // Выключаем вибрации в игре
-            
+            Setting.Vibrate = false;
+
             // Меняем картинку у кнопки на "button_vibrateOFF"
             button.sprite = spriteVibrationOff;
 
@@ -37,7 +38,8 @@ public class ButtonVibration : MonoBehaviour
         else
         {
             // Включаем вибрации в игре
-            
+            Setting.Vibrate = true;
+
             // Меняем картинку у кнопки на "button_vibrateON"
             button.sprite = spriteVibrationOn;
 
