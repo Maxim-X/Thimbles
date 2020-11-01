@@ -28,7 +28,7 @@ public class ButtonBackToMainMenu : MonoBehaviour
 
     void OnMouseUp()
     {
-        Setting.EditRecord(0);
+        Setting.EditRecord(0, true);
         Setting.StartGame = false;
         Setting.pause = false;
         MainCamera.transform.localPosition = new Vector3(-6.17f, 1.903f, -8.329f);

@@ -77,12 +77,36 @@ public class Setting : MonoBehaviour
 
     }
 
-    public static void EditRecord(int newRec)
+    public static void EditRecord(int newRec, bool IsGameOver)
     {
+        print("///////////");
+        print("Не проиграл");
+        print("Очки: "+newRec);
+        print("Рекорд: "+ max_record);
+        print(IsGameOver);
+        print("///////////");
         current_record = newRec;
         if(newRec > max_record)
         {
-            max_record = newRec;
+            if (IsGameOver)
+            {
+                print("Проиграл: " + newRec);
+                // Сохраняем рекорд игрока 
+                recordText = max_record + "\n" + recordText;
+                recordText = recordText.Remove(recordText.Length - 2, 2);
+                PlayerPrefs.SetString("RecordsList", recordText);
+                PlayerPrefs.Save();
+                Debug.Log("Records Saved");
+                recordsNumbersSprite_TextMeshPro.text = recordText;
+            }
+            else
+            {
+                max_record = newRec;
+                print("Рекорд поменялся: " + max_record);
+            }
+            PlayerPrefs.SetInt("maxrecord", max_record);
+            PlayerPrefs.Save();
+            Debug.Log("Save");
         }
         EditSpeedCup();
         
@@ -93,35 +117,10 @@ public class Setting : MonoBehaviour
         pointsAtGameOverSprite_TextMeshPro.text = current_record.ToString();
     }
 
-    public static void SaveRecord(int newRec)
+    public static void SaveRecord()
     {
-        print("Текущее количество очков: " + newRec);
+        print("Текущее количество очков: " + current_record);
         print("Максимальный рекорд: " + max_record);
-
-        current_record = newRec;
-        if (newRec > max_record)
-        {
-            max_record = newRec;
-
-            PlayerPrefs.SetInt("maxrecord", max_record);
-            PlayerPrefs.Save();
-            Debug.Log("Save");
-
-            // Сохраняем рекорд игрока 
-            recordText = max_record + "\n" + recordText;
-            recordText = recordText.Remove(recordText.Length - 2, 2);
-            PlayerPrefs.SetString("RecordsList", recordText);
-            
-            PlayerPrefs.Save();
-            Debug.Log("Records Saved");
-
-            recordsNumbersSprite_TextMeshPro.text = recordText;
-
-        }
-        stat.text = max_record.ToString();
-
-        pointsAtGame_TextMeshPro.text = current_record.ToString();
-        pointsAtGameOverSprite_TextMeshPro.text = current_record.ToString();
     }
 
     public static void EditSpeedCup()
