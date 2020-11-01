@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
@@ -20,6 +21,8 @@ public class Setting : MonoBehaviour
     public static TextMeshPro pointsAtGame_TextMeshPro = null;
     // Текст в диалоговом окне проигрыша с количеством очков
     public static TextMeshPro pointsAtGameOverSprite_TextMeshPro = null;
+    // Текст с рекордами на начальном экране
+    public static TextMeshPro recordsNumbersSprite_TextMeshPro = null;
 
     // Нынешний рекорд
     public static TextMeshPro stat = null;
@@ -32,18 +35,17 @@ public class Setting : MonoBehaviour
     public static Vector3 def_position_ball;
 
     public static int current_record = 0;
-    public static int max_record = 1;
+
+    // Здесь хранится максимальный рекорд
+    public static int max_record = 0;
 
     public static float speed_cup = 0.25f;
     public static int cup_moves = 5;
     public static int cup_moves_def = 5;
 
-    public static int maxrecord;
-    public static string records;
+    // Текст, который будем выводить на экран
+    public static string recordText = "0\n0\n0\n0\n0\n";
     
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -54,23 +56,25 @@ public class Setting : MonoBehaviour
         pointsAtGame_TextMeshPro = GameObject.FindWithTag("GamePoints").GetComponent<TextMeshPro>();
         pointsAtGameOverSprite_TextMeshPro = GameObject.FindWithTag("Points").GetComponent<TextMeshPro>();
         stat = GameObject.FindWithTag("Stats").GetComponent<TextMeshPro>();
+        recordsNumbersSprite_TextMeshPro = GameObject.FindWithTag("RecordsList").GetComponent<TextMeshPro>();
         stat.text = max_record.ToString();
- 
+
+        if (recordText != "0\n0\n0\n0\n0\n")
+            recordText = PlayerPrefs.GetString("RecordsList");
+
+        recordsNumbersSprite_TextMeshPro.text = recordText;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (current_record > maxrecord)
+        if (current_record > max_record)
         {
             PlayerPrefs.SetInt("maxrecord", current_record);
             PlayerPrefs.Save();
             Debug.Log("Save");
         }
-        maxrecord = PlayerPrefs.GetInt("maxrecord");
-        
-
-
+        max_record = PlayerPrefs.GetInt("maxrecord");
     }
 
     public static void EditRecord(int newRec)
@@ -89,10 +93,21 @@ public class Setting : MonoBehaviour
 
     public static void SaveRecord()
     {
-        print(current_record);
-        print(maxrecord);
+        print("Текущее количество очков: " + current_record);
+        print("Максимальный рекорд: " + max_record);
 
-        records += " " + current_record;
+        // Сортируем и удаляем лишние 
+        if (current_record > max_record)
+        {
+            // Сохраняем рекорд игрока 
+            recordText = current_record + "\n" + recordText;
+            recordText = recordText.Remove(6, 2);
+            PlayerPrefs.SetString("RecordsList", recordText);
+            PlayerPrefs.Save();
+            Debug.Log("Records Saved");
+
+            recordsNumbersSprite_TextMeshPro.text = recordText;
+        }
     }
 
     public static void EditSpeedCup()
