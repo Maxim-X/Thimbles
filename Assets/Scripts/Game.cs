@@ -235,6 +235,7 @@ public class Game : MonoBehaviour
                     // Отображаем иконку неправильного ответа на секунду
                     StartCoroutine(coroutine);
 
+                    Setting.SaveRecord();
                     Setting.StartGame = false;
                     Setting.pause = true;
 

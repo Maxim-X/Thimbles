@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -59,5 +60,10 @@ public class Setting : MonoBehaviour
         stat.text = max_record.ToString();
         pointsAtGame_TextMeshPro.text = current_record.ToString();
         pointsAtGameOverSprite_TextMeshPro.text = current_record.ToString();
+    }
+
+    public static void SaveRecord()
+    {
+        print(current_record);
     }
 }
