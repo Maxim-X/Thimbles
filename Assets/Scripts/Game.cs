@@ -28,7 +28,7 @@ public class Game : MonoBehaviour
     private IEnumerator coroutine;
 
     private GameObject correct_cup = null;
-    private GameObject choiceCup;
+    private GameObject choiceCup = null;
     GameObject[] AllCup = null;
     private SpriteRenderer button;
     private Vector3 newScaleButton = new Vector3(1f, 1f, 1f);
@@ -177,7 +177,12 @@ public class Game : MonoBehaviour
             }
             else if (StepGame == 2) // Даем пользователю выбрать стаканчик
             {
-                choiceCup = ChoiceCup.choiceCup;
+                
+                if(choiceCup == null)
+                {
+                    choiceCup = ChoiceCup.choiceCup;
+                }
+
                 if (choiceCup != null)
                 {
                     if (correct_cup_y_pre == 0)
@@ -248,6 +253,7 @@ public class Game : MonoBehaviour
                 count_moves = count_moves_def;
                 StepGame = 0;
                 ChoiceCup.choiceCup = null;
+                choiceCup = null;
             }
         }
         
