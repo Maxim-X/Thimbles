@@ -59,8 +59,7 @@ public class Setting : MonoBehaviour
         if (!PlayerPrefs.HasKey("porba"))
         {
             PlayerPrefs.SetString("RecordsList", recordText);
-            max_record = 0;
-            PlayerPrefs.SetString("maxrecord", max_record.ToString());
+            PlayerPrefs.SetInt("maxrecord", 0);
             PlayerPrefs.SetInt("porba", porba);
             PlayerPrefs.Save();
         }
