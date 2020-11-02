@@ -87,7 +87,6 @@ public class Game : MonoBehaviour
         {
             if (StepGame == 0)
             {
-                print(count_moves);
                 if (timer_start >= 25)
                 {
                     if (correct_cup == null) // выбираем правельный стаканчик
@@ -243,7 +242,10 @@ public class Game : MonoBehaviour
                     {
                         Handheld.Vibrate();
                     }
-                    
+
+                    Setting.EditRecordDataBase(Setting.current_record);
+                    Setting.OutputRecord();
+
                     Setting.StartGame = false;
                     Setting.pause = true;
 
@@ -257,7 +259,7 @@ public class Game : MonoBehaviour
                     // Отображаем диалоговое окно проигрыша, со счётом и кнопками новой игры или выхода из игры
                     gameOver_slideSprite.gameObject.transform.localPosition = new Vector3(3.93f, 1.547f, -7.79f);
                 }
-                Setting.SaveRecord();
+                
                 correct_cup = null;
                 count_moves = Setting.cup_moves;
                 StepGame = 0;

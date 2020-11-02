@@ -28,6 +28,8 @@ public class ButtonBackToMainMenu : MonoBehaviour
 
     void OnMouseUp()
     {
+        Setting.EditRecordDataBase(Setting.current_record);
+        Setting.OutputRecord();
         Setting.EditRecord(0);
         Setting.StartGame = false;
         Setting.pause = false;

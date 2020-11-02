@@ -47,7 +47,7 @@ public class Setting : MonoBehaviour
    
 
     // Текст, который будем выводить на экран
-    public static string recordText = "0\n0\n0\n0\n0\n";
+    public static string recordText = "0;0;0;0;0";
     
     // Start is called before the first frame update
     void Start()
@@ -76,12 +76,17 @@ public class Setting : MonoBehaviour
         max_record = PlayerPrefs.GetInt("maxrecord");
         stat.text = max_record.ToString();
 
-        // Обнуление списка рекордов единожды перед сборкой проекта
-        // PlayerPrefs.SetString("RecordsList", recordText);
 
-        recordText = PlayerPrefs.GetString("RecordsList");
-        
-        recordsNumbersSprite_TextMeshPro.text = recordText;
+        // Обнуление списка рекордов единожды перед сборкой проекта
+        //PlayerPrefs.SetString("RecordsList", recordText);
+        //max_record = 0;
+        //PlayerPrefs.SetInt("maxrecord", max_record);
+
+        OutputRecord();
+
+        //recordText = PlayerPrefs.GetString("RecordsList");
+
+        //recordsNumbersSprite_TextMeshPro.text = recordText;
     }
 
     // Update is called once per frame
@@ -93,36 +98,86 @@ public class Setting : MonoBehaviour
     public static void EditRecord(int newRec)
     {
         current_record = newRec;
-        if(newRec > max_record)
-        {
-            max_record = newRec;
-
-            PlayerPrefs.SetInt("maxrecord", current_record);
-            PlayerPrefs.Save();
-            Debug.Log("Save");
-
-            // Сохраняем рекорд игрока 
-            recordText = max_record + "\n" + recordText;
-            recordText = recordText.Remove(recordText.Length - 2, 2);
-            PlayerPrefs.SetString("RecordsList", recordText);
-            PlayerPrefs.Save();
-            Debug.Log("Records Saved");
-
-            recordsNumbersSprite_TextMeshPro.text = recordText;
-        }
-        EditSpeedCup();
         max_record = PlayerPrefs.GetInt("maxrecord");
-        stat.text = max_record.ToString();
 
+        if (newRec > max_record)
+        {
+            stat.text = newRec.ToString();
+        }
+
+        EditSpeedCup();
+        
         EditmovesCup();
         pointsAtGame_TextMeshPro.text = current_record.ToString();
         pointsAtGameOverSprite_TextMeshPro.text = current_record.ToString();
     }
 
-    public static void SaveRecord()
+    public static void EditRecordDataBase(int newRec)
     {
-        print("Текущее количество очков: " + current_record);
-        print("Максимальный рекорд: " + max_record);
+        recordText = PlayerPrefs.GetString("RecordsList");
+
+        List<int> allRecords = new List<int>();
+
+        string[] oldRecords = recordText.Split(';');
+
+        foreach (string rec in oldRecords)
+        {
+            allRecords.Add(int.Parse(rec));
+        }
+
+        if (allRecords.Find(x => x == newRec) == default(int))
+        {
+            allRecords.Add(newRec);
+        }
+
+        allRecords.Sort();
+        allRecords.Reverse();
+
+        if (allRecords.Count() > 5) {
+            allRecords.RemoveRange(5, allRecords.Count - 5);
+        }
+
+        foreach (int rec in allRecords)
+        {
+            print(rec);
+        }
+
+        string strRecords = "";
+        for (int i = 0; i < allRecords.Count; i++)
+        {
+            if(i != allRecords.Count - 1)
+            {
+                strRecords += Convert.ToString(allRecords[i]) + ";";
+            }
+            else
+            {
+                strRecords += Convert.ToString(allRecords[i]);
+            }
+        }
+
+        PlayerPrefs.SetString("RecordsList", strRecords);
+
+        if (newRec > max_record)
+        {
+            max_record = newRec;
+            PlayerPrefs.SetInt("maxrecord", max_record);
+            PlayerPrefs.Save();
+
+        }
+
+        PlayerPrefs.Save();
+
+    }
+
+
+    public static void OutputRecord()
+    {
+        recordText = PlayerPrefs.GetString("RecordsList");
+        recordText = recordText.Replace(";", "\n");
+
+        recordsNumbersSprite_TextMeshPro.text = recordText;
+
+
     }
 
     public static void EditSpeedCup()
