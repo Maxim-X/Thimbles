@@ -43,6 +43,9 @@ public class Setting : MonoBehaviour
     public static int cup_moves = 5;
     public static int cup_moves_def = 5;
 
+    public static int porba = 0;
+   
+
     // Текст, который будем выводить на экран
     public static string recordText = "0\n0\n0\n0\n0\n";
     
@@ -51,9 +54,16 @@ public class Setting : MonoBehaviour
     {
         //Обнуление списка рекордов единожды перед сборкой проекта
         //добавим сюда ещё очистку макс рекорда
-        //PlayerPrefs.SetString("RecordsList", recordText);
-        //max_record = 0;
-        //PlayerPrefs.SetString("maxrecord", max_record.ToString());
+
+        //PlayerPrefs.DeleteKey("porba");
+        if (!PlayerPrefs.HasKey("porba"))
+        {
+            PlayerPrefs.SetString("RecordsList", recordText);
+            max_record = 0;
+            PlayerPrefs.SetString("maxrecord", max_record.ToString());
+            PlayerPrefs.SetInt("porba", porba);
+            PlayerPrefs.Save();
+        }
 
         def_position_cup_1 = cup_1.transform.localPosition;
         def_position_cup_2 = cup_2.transform.localPosition;
