@@ -136,11 +136,6 @@ public class Setting : MonoBehaviour
             allRecords.RemoveRange(5, allRecords.Count - 5);
         }
 
-        foreach (int rec in allRecords)
-        {
-            print(rec);
-        }
-
         string strRecords = "";
         for (int i = 0; i < allRecords.Count; i++)
         {
