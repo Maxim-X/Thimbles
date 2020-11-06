@@ -19,6 +19,10 @@ public class ChoiceCup : MonoBehaviour
 
     void OnMouseDown()
     {
-        choiceCup = gameObject;
+        if (!Setting.pause)
+        {
+            choiceCup = gameObject;
+            print(choiceCup);
+        }
     }
 }
