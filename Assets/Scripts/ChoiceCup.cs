@@ -22,7 +22,6 @@ public class ChoiceCup : MonoBehaviour
         if (!Setting.pause)
         {
             choiceCup = gameObject;
-            print(choiceCup);
         }
     }
 }
