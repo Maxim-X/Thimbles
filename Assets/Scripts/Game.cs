@@ -237,7 +237,7 @@ public class Game : MonoBehaviour
                     // Запускаем сопрограмму
                     coroutine = ShowAnswerAfterTime(1.0f, false);
                     // Отображаем иконку неправильного ответа на секунду
-                    StartCoroutine(coroutine);
+                    //StartCoroutine(coroutine);
                     if (Setting.Vibrate)
                     {
                         Handheld.Vibrate();
