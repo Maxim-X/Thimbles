@@ -45,6 +45,7 @@ public class Game : MonoBehaviour
 
     private GameObject UseCup_1 = null;
     private GameObject UseCup_2 = null;
+    private GameObject old_correct_cup = null;
 
     private float x_pre_1; // Предыдущий x передвижения
     private float x_pre_2; // Предыдущий x передвижения
@@ -80,6 +81,7 @@ public class Game : MonoBehaviour
             count_moves = count_moves_def - 1;
             timer_start = 0;
             correct_cup = null;
+            old_correct_cup = null;
         }
 
 
@@ -94,7 +96,14 @@ public class Game : MonoBehaviour
                         //Cup_1.transform.localPosition = Setting.def_position_cup_1;
                         //Cup_2.transform.localPosition = Setting.def_position_cup_2;
                         //Cup_3.transform.localPosition = Setting.def_position_cup_3;
-                        correct_cup = AllCup[UnityEngine.Random.Range(0, 3)];
+                        if(old_correct_cup == null)
+                        {
+                            correct_cup = AllCup[UnityEngine.Random.Range(0, 3)];
+                        }
+                        else
+                        {
+                            correct_cup = old_correct_cup;
+                        }
                         ball.transform.localPosition = new Vector3(correct_cup.transform.localPosition.x, correct_cup.transform.localPosition.y - 0.2f, correct_cup.transform.localPosition.z);
                         coord_correct_cup_raise = new Vector3(correct_cup.transform.localPosition.x, correct_cup.transform.localPosition.y + 0.5f, correct_cup.transform.localPosition.z);
                         coord_correct_cup_def = correct_cup.transform.localPosition;
@@ -259,7 +268,7 @@ public class Game : MonoBehaviour
                     // Отображаем диалоговое окно проигрыша, со счётом и кнопками новой игры или выхода из игры
                     gameOver_slideSprite.gameObject.transform.localPosition = new Vector3(3.93f, 1.547f, -7.79f);
                 }
-                
+                old_correct_cup = correct_cup;
                 correct_cup = null;
                 count_moves = Setting.cup_moves;
                 StepGame = 0;
