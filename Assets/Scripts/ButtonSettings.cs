@@ -35,6 +35,4 @@ public class ButtonSettings : MonoBehaviour
         // Прячем кнопку настроек
         settings_buttonSprite.gameObject.transform.localPosition = new Vector3(0f, 0f, 0f);
     }
-
-
 }
