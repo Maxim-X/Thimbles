@@ -9,6 +9,7 @@ TagManager:
   - GamePoints
   - Record
   - RecordsList
+  - ChooseCupText
   layers:
   - Default
   - TransparentFX

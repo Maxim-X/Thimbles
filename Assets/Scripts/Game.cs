@@ -22,6 +22,8 @@ public class Game : MonoBehaviour
     [SerializeField] private SpriteRenderer pointsCount_Sprite = null;
     // Текст с нынешним рекордом
     public static TextMeshPro record_TextMeshPro = null;
+    // Текст "поднимите стаканчик"
+    public static TextMeshPro chooseCupText_TextMeshPro = null;
 
     // Диалоговое окно проигрыша
     [SerializeField] private SpriteRenderer gameOver_slideSprite = null;
@@ -65,6 +67,7 @@ public class Game : MonoBehaviour
         AllCup = new GameObject[] { Cup_1,Cup_2,Cup_3 };
 
         record_TextMeshPro = GameObject.FindWithTag("Record").GetComponent<TextMeshPro>();
+        chooseCupText_TextMeshPro = GameObject.FindWithTag("ChooseCupText").GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame
@@ -186,13 +189,16 @@ public class Game : MonoBehaviour
                 {
                     x_pre_1 = UseCup_1.transform.localPosition.x;
                 }
-
             }
             else if (StepGame == 2) // Даем пользователю выбрать стаканчик
             {
-                
-                if(choiceCup == null)
+                if (choiceCup == null)
                 {
+                    //// Запускаем сопрограмму
+                    //coroutine = ShowChooseCupText(1.0f);
+                    //// Отображаем текст "выберите стаканчик" на секунду
+                    //StartCoroutine(coroutine);
+
                     choiceCup = ChoiceCup.choiceCup;
                 }
 
@@ -301,12 +307,12 @@ public class Game : MonoBehaviour
         newScaleButton = new Vector3(1f, 1f, 1f);
     }
 
-    //Таймер с точностью до секунды, отображающий иконку правильного/неправильного ответа
+    // Таймер с точностью до секунды, отображающий иконку правильного/неправильного ответа
     IEnumerator ShowAnswerAfterTime(float timeInSec, bool IsCorrectAnswer)
     {
         if (IsCorrectAnswer)
         {
-            // Отображаем инонку правильного ответа
+            // Отображаем иконку правильного ответа
             сorrectAnswerSprite.gameObject.transform.localPosition = new Vector3(3.93f, 1.72f, -7.62f);
             // Ждём нужное время в секундах
             yield return new WaitForSeconds(timeInSec);
@@ -315,12 +321,23 @@ public class Game : MonoBehaviour
         }
         else
         {
-            // Отображаем инонку неправильного ответа
+            // Отображаем иконку неправильного ответа
             notCorrectAnswerSprite.gameObject.transform.localPosition = new Vector3(3.93f, 1.72f, -7.62f);
             // Ждём нужное время в секундах
             yield return new WaitForSeconds(timeInSec);
             // Прячем инонку неправильного ответа
             notCorrectAnswerSprite.gameObject.transform.localPosition = new Vector3(1.347f, 4.003f, -6.882f);
         }
+    }
+
+    // Показ текста "поднимите стаканчик"
+    IEnumerator ShowChooseCupText(float timeInSec)
+    {
+        // Отображаем текст
+        chooseCupText_TextMeshPro.gameObject.transform.localPosition = new Vector3(3.61f, -0.21f, -5.33f);
+        // Ждём нужное время в секундах
+        yield return new WaitForSeconds(timeInSec);
+        // Прячем текст
+        chooseCupText_TextMeshPro.gameObject.transform.localPosition = new Vector3(0f, 0f, 0f);
     }
 }
