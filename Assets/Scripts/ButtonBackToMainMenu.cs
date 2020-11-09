@@ -28,6 +28,12 @@ public class ButtonBackToMainMenu : MonoBehaviour
 
     void OnMouseUp()
     {
+        Game.correct_cup = null;
+        Game.count_moves = Setting.cup_moves;
+        Game.StepGame = 0;
+        ChoiceCup.choiceCup = null;
+        Game.choiceCup = null;
+
         Setting.EditRecordDataBase(Setting.current_record);
         Setting.OutputRecord();
         Setting.EditRecord(0);

@@ -32,8 +32,8 @@ public class Game : MonoBehaviour
     // Документация, показывающая как это работает: https://docs.unity3d.com/ru/current/ScriptReference/MonoBehaviour.StartCoroutine.html
     private IEnumerator coroutine;
 
-    private GameObject correct_cup = null;
-    private GameObject choiceCup = null;
+    public static GameObject correct_cup = null;
+    public static GameObject choiceCup = null;
     GameObject[] AllCup = null;
     private SpriteRenderer button;
     private Vector3 newScaleButton = new Vector3(1f, 1f, 1f);
@@ -42,7 +42,7 @@ public class Game : MonoBehaviour
     private Vector3 cup_1_coord;
     private Vector3 cup_2_coord;
 
-    private int count_moves = Setting.cup_moves;
+    public static int count_moves = Setting.cup_moves;
     private int count_moves_def = Setting.cup_moves_def;
 
     private GameObject UseCup_1 = null;
